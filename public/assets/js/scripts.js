@@ -1,6 +1,6 @@
 /**
  * Frontend Script
- * Fundamentals of Web Performance
+ * Web Performance
  *
  * These are the scripts for the frontend website. It contains options to call
  * both the RESTful and Bespoke APIs.

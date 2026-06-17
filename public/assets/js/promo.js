@@ -1,6 +1,6 @@
 /**
  * Promo Banner
- * Fundamentals of Web Performance
+ * Web Performance
  *
  * Example add-on script that gets the promoted products for the store and
  * renders a promotional banner. This demonstrates:

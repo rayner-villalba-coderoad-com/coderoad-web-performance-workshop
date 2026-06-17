@@ -1,7 +1,7 @@
 {
-  "name": "fundamentals-of-web-performance",
+  "name": "coderoad-web-performance",
   "version": "1.0.0",
-  "description": "Example website for the \"Fundamentals of Web Performance\" workshop.",
+  "description": "Example website for the \"CodeRoad Web Performance\" workshop.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",
@@ -11,22 +11,13 @@
     "imagePngToWebP": "node ./tools/imagePngToWebP.mjs",
     "deploy": "./tools/deploy.sh"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/toddhgardner/fundametals-of-web-performance.git"
-  },
   "keywords": [
     "web-performance",
     "core-web-vitals",
     "workshop",
     "frontend-masters"
   ],
-  "author": "Todd H. Gardner <todd@toddhgardner.com>",
   "license": "",
-  "bugs": {
-    "url": "https://github.com/toddhgardner/fundametals-of-web-performance/issues"
-  },
-  "homepage": "https://github.com/toddhgardner/fundametals-of-web-performance#readme",
   "dependencies": {
     "better-sqlite3": "^11.3.0",
     "body-parser": "^2.0.1",
@@ -43,9 +34,9 @@
   },
   "devDependencies": {
     "glob": "^11.0.0",
-    "imagemin": "^9.0.0",
+    "imagemin": "^7.0.1",
     "imagemin-pngquant": "^10.0.0",
-    "imagemin-webp": "^8.0.0",
+    "imagemin-webp": "^4.1.0",
     "jimp": "^1.6.0",
     "lightningcss-cli": "^1.27.0"
   }
