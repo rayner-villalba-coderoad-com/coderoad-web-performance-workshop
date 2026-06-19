@@ -2,20 +2,30 @@
  * WebP Converter
  * Fundamentals of Web Performance
  *
- * Build tool to optimize convert the optimized PNGs in the `min` directory
+ * Build tool to convert the optimized PNGs in the `min` directory
  * into WebP files, placed in the `webp` directory.
  *
- * @see https://www.npmjs.com/package/imagemin
+ * @see https://sharp.pixelplumbing.com/
  */
 
-import imagemin from 'imagemin';
-import imageminWebp from 'imagemin-webp';
+import { parse } from 'node:path';
+import { mkdir } from 'node:fs/promises';
+import sharp from 'sharp';
+import { glob } from 'glob';
 
-console.log("Converting to WebP Images",);
+console.log('Converting to WebP Images');
 
-await imagemin(['public/assets/img/min/**/*.png', 'public/assets/img/*.png'], {
-  destination: "public/assets/img/webp",
-  plugins: [
-    imageminWebp({ quality: 50 })
-  ]
-});
+const filePaths = await glob([
+  'public/assets/img/min/**/*.png',
+  'public/assets/img/*.png',
+]);
+
+await mkdir('public/assets/img/webp', { recursive: true });
+
+await Promise.all(
+  filePaths.map((path) =>
+    sharp(path)
+      .webp({ quality: 50 })
+      .toFile(`public/assets/img/webp/${parse(path).name}.webp`)
+  )
+);

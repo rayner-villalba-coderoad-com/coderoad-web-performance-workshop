@@ -7,19 +7,27 @@
  * If images have already been resized, the responsive images will be optimized
  * as well.
  *
- * @see https://www.npmjs.com/package/imagemin
+ * @see https://sharp.pixelplumbing.com/
  */
 
-import imagemin from 'imagemin';
-import imageminPngquant from 'imagemin-pngquant';
+import { parse } from 'node:path';
+import { mkdir } from 'node:fs/promises';
+import sharp from 'sharp';
+import { glob } from 'glob';
 
-console.log("Optimizing PNG Images");
+console.log('Optimizing PNG Images');
 
-await imagemin(['public/assets/img/**/*.png'], {
-  destination: 'public/assets/img/min',
-  plugins: [
-    imageminPngquant({
-      quality: [0.6, 0.8]
-    })
-  ]
+const filePaths = await glob('public/assets/img/**/*.png', {
+  ignore: 'public/assets/img/min/**',
 });
+
+await mkdir('public/assets/img/min', { recursive: true });
+
+await Promise.all(
+  filePaths.map((path) =>
+    sharp(path)
+      // `quality` + `palette` mirror pngquant's lossy quantization (0.6–0.8).
+      .png({ quality: 80, palette: true, compressionLevel: 9 })
+      .toFile(`public/assets/img/min/${parse(path).base}`)
+  )
+);

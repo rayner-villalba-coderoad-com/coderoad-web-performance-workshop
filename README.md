@@ -4,7 +4,7 @@ Example Online store **Developer Stickers Online** for the Web Performance Works
 
 ## Getting Started
 
-This is a webserver built on NodeJS and Express that servers plain HTML, CSS, JavaScript and Images. You need to have **Node ~20.0** to run this project.
+This is a webserver built on NodeJS and Express that servers plain HTML, CSS, JavaScript and Images. You need to have **Node ~24.0** (current LTS) to run this project.
 
 1. Install Dependencies `npm install`
 2. Launch the Dev Server `npm start`
